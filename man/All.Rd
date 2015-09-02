@@ -4,46 +4,46 @@
 \alias{All}
 \title{Test if all items in an object evaluate to TRUE.}
 \usage{
-All(f, x, ..., na.rm = FALSE)
+All(.x, .f, ..., na.rm = FALSE)
 }
 \arguments{
-\item{f}{a predicate function.}
+\item{.x}{An iterable object.}
 
-\item{x}{an iterable object.}
+\item{.f}{A predicate function.}
 
-\item{...}{further arguments passed to the predicate function.}
+\item{...}{Further arguments passed to the predicate function.}
 
-\item{na.rm}{a logical value indicating whether NA values should be stripped before the computation proceeds.}
+\item{na.rm}{A logical value indicating whether NA values should be stripped before the computation proceeds.}
 }
 \value{
-a logical value.
+A logical value indicating if all items evaluated as TRUE.
 }
 \description{
 \code{All()} is a predicate functional that takes a predicate function
-\code{f} and an iterable object \code{x} and:
+\code{.f} and an iterable object \code{.x} and:
 \enumerate{
-  \item iterates over each item \code{i} in object \code{x},
-  \item evaluates \code{f(i)},
-  \item and ultimately returns TRUE if all items \code{i} in object \code{x} evaluate as TRUE.
+  \item iterates over each item \code{i} in object \code{.x},
+  \item evaluates \code{.f(i)},
+  \item and ultimately returns TRUE if all items \code{i} in object \code{.x} evaluate as TRUE.
   }
 }
 \examples{
 # Examples
 data(mtcars)
-All(is.numeric, mtcars) # TRUE
-All(is.character, mtcars) # FALSE
+All(mtcars, is.numeric) # TRUE
+All(mtcars, is.character) # FALSE
 mtcars$am <- factor(mtcars$am)
-All(is.numeric, mtcars) # FALSE
-All(is.factor, mtcars) # FALSE
+All(mtcars, is.numeric) # FALSE
+All(mtcars, is.factor) # FALSE
 
 # Handles NAs and NULLs
-All(is.numeric, list(NA, "3", NULL)) # FALSE
-All(is.numeric, list(NA, 3, NULL)) # FALSE
-All(is.numeric, list(NA, "3", NULL, 5)) # FALSE
+All(list(NA, "3", NULL), is.numeric) # FALSE
+All(list(NA, 3, NULL), is.numeric) # FALSE
+All(list(NA, "3", NULL, 5), is.numeric) # FALSE
 
 # Use na.rm = TRUE to remove NAs and NULLS
-All(Identity, list(NA, TRUE)) # NA
-All(Identity, list(NA, TRUE), na.rm = TRUE) # TRUE
+All(list(NA, TRUE), Identity) # NA
+All(list(NA, TRUE), Identity, na.rm = TRUE) # TRUE
 }
 \seealso{
 \code{\link{Any}} to test if all items in an object evaluate to TRUE.

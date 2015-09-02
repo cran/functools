@@ -1,22 +1,21 @@
-#' Best
+#' Find the best value in a vector.
 #'
-#' \code{Best()} takes a vector and a two-argument function that returns
-#' a logical constant (either TRUE or FALSE), and returns that function
-#' reduced over that vector.
+#' \code{Best()} takes a vector \code{.x} and a binary predicate function
+#' \code{.f} and returns the result of \code{.f} reduced over \code{.x}.
 #'
-#' @param f a function.
-#' @param x a value.
-#' @return  a two-argument function that returns a logical constant.
+#' @param .x A vector.
+#' @param .f A binary predicate function.
+#' @return The best value in that vector, as determined by the binary predicate function.
 #' @family aggregate functionals
 #' @examples
 #' # Simulate the behavior of max with numerics
-#' Best(function(x, y) return(x > y), 1:10)
+#' Best(1:10, function(x, y) return(x > y))
 #' # Simulate the behavior of min with numerics
-#' Best(function(x, y) return(x < y), 1:10)
+#' Best(1:10, function(x, y) return(x < y))
 #' # This comparison function prefers values that begin with l
-#' Best(function(x, y) return(x[1] == "l"), letters)
+#' Best(letters, function(x, y) return(x[1] == "l"))
 #' @export
-Best <- function(f, x) {
-  f <- match.fun(f)
-  return(Reduce(function(x, y) ifelse(f(x, y), x, y), x))
+Best <- function(.x, .f) {
+  .f <- match.fun(.f)
+  return(Reduce(function(.y, .z) ifelse(.f(.y, .z), .y, .z), .x))
 }

@@ -2,15 +2,19 @@
 functools
 =========
 
-[![Build Status](https://travis-ci.org/paulhendricks/functools.png?branch=master)](https://travis-ci.org/paulhendricks/functools) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/functools)](http://cran.r-project.org/package=functools)
+[![Build Status](https://travis-ci.org/paulhendricks/functools.png?branch=master)](https://travis-ci.org/paulhendricks/functools) [![Build status](https://ci.appveyor.com/api/projects/status/au9ww7v8mhgr59s8/branch/master?svg=true)](https://ci.appveyor.com/project/paulhendricks/functools/branch/master) [![codecov.io](http://codecov.io/github/paulhendricks/functools/coverage.svg?branch=master)](http://codecov.io/github/paulhendricks/functools?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/functools)](http://cran.r-project.org/package=functools) [![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/functools)](http://cran.rstudio.com/package=functools) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active)
 
-functools is an R package for extending functional programming in R. It has three main goals:
+`functools` extends functional programming in R. It accomplishes several goals:
 
--   Add support to the usual higher order functional suspects (Map, Reduce, Filter, etc.) without extending any core R objects.
+-   Add support to the usual higher order functional suspects (`Filter()`, `Map()`, `Reduce()`, etc.) with higher order functions (`Compose()`, `Memoise()`, `Partial()`, `Reject()`, `Fail_With()`, `Reduce_Right()`, `All()`, `Any()`, and `Best()`).
 
--   Provide blazing fast performance for in-memory data by writing key pieces in C++ and options for parallelization, where possible.
+-   Supply higher order function generators (`Andify()`, `Orify()`) to make composing predicate functions easier.
 
--   Use a consistent API to access different functionals in base R such as `lapply` or `apply`.
+-   Provide wrappers (`Apply()`, `Lapply()`, `Mapply()`, `Sapply()`, `Tapply()`, and `Vapply()`) around their respective base R functionals to create an API with consistent naming convention, positional arguments, and argument names.
+
+-   Implement common constants as functions (`True()`, `False()`, `Identity()`, `Null()`, `Na()`) for point-free programming.
+
+-   Extend abstract concepts of existiness and truthiness through functions (`Existy()`, `Truthy()`).
 
 functools achieves these goals through three main types of function design patterns:
 
@@ -19,6 +23,9 @@ functools achieves these goals through three main types of function design patte
 -   Functionals (functions that take functions and return data)
 
 -   Function Operators (functions that take functions and return functions)
+
+Installation
+------------
 
 You can install:
 
@@ -38,8 +45,3 @@ You can install:
     ```
 
 If you encounter a clear bug, please file a minimal reproducible example on [github](https://github.com/paulhendricks/functools/issues).
-
-Learning functools
-------------------
-
-To get started, read the notes below, then read the intro vignette: `vignette("introduction", package = "functools")`.

@@ -4,14 +4,14 @@
 \alias{Lapply}
 \title{Wrapper for lapply function.}
 \usage{
-Lapply(f, x, ...)
+Lapply(.x, .f, ...)
 }
 \arguments{
-\item{f}{a function.}
+\item{.x}{A vector.}
 
-\item{x}{a value.}
+\item{.f}{A function to be applied.}
 
-\item{...}{optional arguments to f.}
+\item{...}{Optional arguments to .f.}
 }
 \description{
 Wrapper for \code{\link[base]{lapply}}.
@@ -19,6 +19,8 @@ Wrapper for \code{\link[base]{lapply}}.
 \seealso{
 \code{\link[base]{lapply}} for code and documentation.
 
-Other functionals: \code{\link{Apply}}
+Other functionals: \code{\link{Apply}};
+  \code{\link{Mapply}}; \code{\link{Sapply}};
+  \code{\link{Tapply}}; \code{\link{Vapply}}
 }
 

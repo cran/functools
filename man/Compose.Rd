@@ -3,19 +3,21 @@
 \name{Compose}
 \alias{Compose}
 \alias{\%O\%}
-\title{Compose multiple functions}
+\title{Compose multiple functions.}
 \usage{
 Compose(...)
 
-f \%O\% g
+.f \%O\% .g
 }
 \arguments{
-\item{...}{n functions to apply in order from right to left}
+\item{...}{n functions to apply in order from right to left.}
 
-\item{f,g}{two functions to compose for the infix form}
+\item{.f}{A function.}
+
+\item{.g}{A function.}
 }
 \value{
-a function
+A function that will apply each function in order from right to left.
 }
 \description{
 In infix and prefix forms.
@@ -29,6 +31,8 @@ add1 <- function(x) x + 1
 Compose(add1,add1)(8)
 }
 \seealso{
-Other function operators: \code{\link{Failwith}}
+Other function operators: \code{\link{Fail_With}};
+  \code{\link{Memoise}}; \code{\link{Partial}};
+  \code{\link{Reduce_Right}}
 }
 

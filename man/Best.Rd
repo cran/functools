@@ -2,32 +2,28 @@
 % Please edit documentation in R/Best.R
 \name{Best}
 \alias{Best}
-\title{Best}
+\title{Find the best value in a vector.}
 \usage{
-Best(f, x)
+Best(.x, .f)
 }
 \arguments{
-\item{f}{a function.}
+\item{.x}{A vector.}
 
-\item{x}{a value.}
+\item{.f}{A binary predicate function.}
 }
 \value{
-a two-argument function that returns a logical constant.
+The best value in that vector, as determined by the binary predicate function.
 }
 \description{
-\code{Best()} takes a vector and a two-argument function that returns
-a logical constant (either TRUE or FALSE), and returns that function
-reduced over that vector.
+\code{Best()} takes a vector \code{.x} and a binary predicate function
+\code{.f} and returns the result of \code{.f} reduced over \code{.x}.
 }
 \examples{
 # Simulate the behavior of max with numerics
-Best(function(x, y) return(x > y), 1:10)
+Best(1:10, function(x, y) return(x > y))
 # Simulate the behavior of min with numerics
-Best(function(x, y) return(x < y), 1:10)
+Best(1:10, function(x, y) return(x < y))
 # This comparison function prefers values that begin with l
-Best(function(x, y) return(x[1] == "l"), letters)
-}
-\seealso{
-Other aggregate functionals: \code{\link{Finder}}
+Best(letters, function(x, y) return(x[1] == "l"))
 }
 
